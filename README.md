@@ -1,16 +1,20 @@
-Repository for the neovim configuration. Called it vim though.
-Using the lua version with NvChad or the one writen in vimscript should offer
-more or less the same experience, all the basic mapping should be the same,
-even if the vimscript does not use the <leader> command.
-For the lua version, read the NvChad help.
+Repository for my neovim and Tmux configuration .
+The Tmux seems still unstable, I'll try to fix it.
+NvChad can do more and is more stable than the vimscript version. Even though,
+using the lua version with NvChad or the one writen in vimscript should offer
+more or less the same experience. For the lua version, read the NvChad help.
 
-# General
-For both install a nerdfont so it can work well:
+# Installation
+## Nerdfont
+For both install, please install a nerdfont so it can work well:
 https://github.com/ryanoasis/nerd-fonts
-Then copy and rename on the two folder into nvim/ and add it to your ~/.config
-folder.
+Chose a nerdfont wihtout the "mono" keyword to get the best experience.
 
-# Lua
+## General
+Clone the git and copy the files in the right folders after installing neovim,
+NvChad, tmux & tpm
+
+# Lua/NvChad
 The lua version is only the custom folder that is suppose to be added to the
 NvChad configuration.
 For NvChad follow : https://github.com/NvChad/NvChad/
