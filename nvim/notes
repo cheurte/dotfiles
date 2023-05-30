@@ -1,0 +1,4 @@
+To install grooy-langage-server:
+1. Install the full JDK toolchain: sudo apt install openjdk-17-jdk
+2. Restart computer/wsl session
+2. run the command: ./gradlew -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=3128 build
