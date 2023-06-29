@@ -61,6 +61,7 @@ local plugins = {
         "lua-language-server",
         "pyright",
         "texlab",
+        "ltex-ls",
         "latexindent",
         "pylint",
         "stylua",

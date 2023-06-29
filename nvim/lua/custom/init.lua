@@ -14,9 +14,6 @@ opt.shiftwidth = 4
 opt.scrolloff = 10
 opt.foldlevel = 99
 opt.signcolumn = "auto"
--- opt.foldmethod='expr'
-
--- vim.cmd('autocmd FileType * setlocal foldexpr=anyfold#foldexpr()')
 
 vim.cmd [[
     highlight Cursor guifg=black guibg=black

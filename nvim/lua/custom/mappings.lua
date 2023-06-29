@@ -53,6 +53,9 @@ M.abc = {
     ["<leader>et"] = { "<cmd>Telescope diagnostics<CR>", "open error window" },
     ["<leader>en"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "go to next error" },
     ["<leader>ep"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "go to previous error" },
+
+    -- Spelling mapping
+    -- ["<F3>"] = { "<cmd> :set spell spelllang=en_us<CR>", "Toggle Spelling"},
   },
 
   v = {
