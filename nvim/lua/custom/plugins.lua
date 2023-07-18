@@ -20,7 +20,38 @@ local plugins = {
   },
   {
     "pseewald/vim-anyfold",
-    lazy = false,
+    event = "InsertEnter",
+    -- lazy = false,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    optional = true,
+    opts = function(_, opts)
+      local function flash(prompt_bufnr)
+        require("flash").jump {
+          pattern = "^",
+          label = { after = { 0, 0 } },
+          search = {
+            mode = "search",
+            exclude = {
+              function(win)
+                return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
+              end,
+            },
+          },
+          action = function(match)
+            local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+            picker:set_selection(match.pos[1] - 1)
+          end,
+        }
+      end
+      opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+        mappings = {
+          n = { s = flash },
+          i = { ["<c-s>"] = flash },
+        },
+      })
+    end,
   },
   {
     "yamatsum/nvim-cursorline",
@@ -65,7 +96,8 @@ local plugins = {
         "latexindent",
         "pylint",
         "stylua",
-        "autopep8",
+        -- "autopep8",
+        "black",
       },
     },
     automatic_install = true,
@@ -101,33 +133,34 @@ local plugins = {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       return require "custom.configs.alpha"
     end,
   },
-  {
-    "folke/drop.nvim",
-    config = function()
-      require("drop").setup()
-    end,
-  },
+  -- {
+  --   "folke/drop.nvim",
+  --   config = function()
+  --     require("drop").setup()
+  --   end,
+  -- },
   {
     "chrisbra/csv.vim",
     ft = { "csv" },
     config = function() end,
   },
-  {
-    "rcarriga/nvim-notify",
-    lazy = false,
-    config = function()
-      require("notify").setup {
-        stages = "fade_in_slide_out",
-        background_colour = "FloatShadow",
-        timeout = 3000,
-      }
-      vim.notify = require "notify"
-    end,
-  },
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   lazy = false,
+  --   config = function()
+  --     require("notify").setup {
+  --       stages = "fade_in_slide_out",
+  --       background_colour = "floatshadow",
+  --       timeout = 3000,
+  --     }
+  --     vim.notify = require "notify"
+  --   end,
+  -- },
   {
     "chentoast/marks.nvim",
     lazy = false,
@@ -160,7 +193,7 @@ local plugins = {
         mapping = { "jk", "jj" },
         timeout = vim.o.timeoutlen,
         clear_empty_lines = false,
-        keys = "<Esc>",
+        keys = "<esc>",
       }
     end,
   },
@@ -168,5 +201,34 @@ local plugins = {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+     -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
+    -- {
+    --     "ggandor/leap.nvim",
+    --     event="VeryLazy",
+    --
+    -- }
 }
 return plugins

@@ -7,7 +7,8 @@ local sources = {
     formatting.rustfmt,
     formatting.latexindent,
     lint.pylint,
-    formatting.autopep8,
+    -- formatting.autopep8,
+    formatting.black,
     -- null_ls.builtins.completion.luasnip
     formatting.stylua,
 }
