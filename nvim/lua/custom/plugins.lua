@@ -88,16 +88,23 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- Rust
         "rust-analyzer",
+        -- rust
         "lua-language-server",
+        "stylua",
+        --python
         "pyright",
+        -- "pylint",
+        "mypy",
+        "ruff",
+        "black",
+        -- latex
+        "latexindent",
         "texlab",
         "ltex-ls",
-        "latexindent",
-        "pylint",
-        "stylua",
+        -- "pylint",
         -- "autopep8",
-        "black",
       },
     },
     automatic_install = true,
@@ -223,12 +230,7 @@ local plugins = {
       { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
   },
-    -- {
-    --     "ggandor/leap.nvim",
-    --     event="VeryLazy",
-    --
-    -- }
+  },
 }
 return plugins
