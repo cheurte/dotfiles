@@ -105,6 +105,7 @@ local plugins = {
         "ltex-ls",
         -- "pylint",
         -- "autopep8",
+        -- "csv",
       },
     },
     automatic_install = true,
