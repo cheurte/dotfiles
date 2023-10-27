@@ -1,7 +1,7 @@
 local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
+     opts = {
       ensure_installed = {
         -- defaults
         "vim",
@@ -74,7 +74,7 @@ local plugins = {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "jose-elias-alvarez/null-ls.nvim",
+      "nvimtools/none-ls.nvim",
       config = function()
         require "custom.configs.null-ls"
       end,
@@ -139,6 +139,7 @@ local plugins = {
     end,
   },
   {
+    --- Startup page
     "goolord/alpha-nvim",
     event = "VimEnter",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -146,51 +147,18 @@ local plugins = {
       return require "custom.configs.alpha"
     end,
   },
-  -- {
-  --   "folke/drop.nvim",
-  --   config = function()
-  --     require("drop").setup()
-  --   end,
-  -- },
   {
+    --- Read CSV in a correct manner
     "chrisbra/csv.vim",
     ft = { "csv" },
     config = function() end,
   },
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   lazy = false,
-  --   config = function()
-  --     require("notify").setup {
-  --       stages = "fade_in_slide_out",
-  --       background_colour = "floatshadow",
-  --       timeout = 3000,
-  --     }
-  --     vim.notify = require "notify"
-  --   end,
-  -- },
   {
+    --- Show marks
     "chentoast/marks.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
-      require("marks").setup {
-        -- whether to map keybinds or not. default true
-        default_mappings = true,
-        -- which builtin marks to show. default {}
-        builtin_marks = { ".", "<", ">", "^" },
-        -- whether movements cycle back to the beginning/end of buffer. default true
-        cyclic = true,
-        -- whether the shada file is updated after modifying uppercase marks. default false
-        force_write_shada = false,
-        refresh_interval = 250,
-        sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
-        excluded_filetypes = {},
-        bookmark_0 = {
-          sign = "⚑",
-          annotate = false,
-        },
-        mappings = {},
-      }
+      require("marks").setup {}
     end,
   },
   {
@@ -222,16 +190,37 @@ local plugins = {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-     -- stylua: ignore
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
+  {
+    "danymat/neogen",
+    config = function()
+      require("custom.configs.neogen").setup()
+    end,
+    cmd = { "Neogen" },
+    module = "neogen",
+    disable = false,
   },
+  {
+    "preservim/tagbar",
+    event = "VeryLazy",
+  },
+  {
+    "m-demare/hlargs.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("hlargs").setup()
+    end,
+  },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+    event = "VeryLazy",
+    config = function()
+      return require "custom.configs.rainbow"
+    end,
+  },
+    {
+        'wellle/context.vim',
+        event="VeryLazy",
+    }
 }
 return plugins
