@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 local augroup = vim.api.nvim_create_augroup
 local opt = vim.opt
 local g = vim.g
-
+local cmd = vim.cmd
 -- General parameters
 opt.cursorcolumn = true
 opt.cursorline = true
@@ -15,7 +15,7 @@ opt.scrolloff = 10
 opt.foldlevel = 99
 opt.signcolumn = "auto"
 
-vim.cmd [[
+cmd [[
     " highlight Cursor guifg=white guibg=black
     " highlight iCursor guifg=white guibg=white
     " set guicursor=n-v-c:block-Cursor
@@ -112,7 +112,7 @@ autocmd({ "WinEnter" }, {
   group = cursorGrp,
 })
 
-vim.cmd [[
+cmd [[
     augroup numertoggle
       autocmd!
       autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
