@@ -52,4 +52,11 @@ The new Prefix is <kbd>ctrl</kbd> + `Space`
 
 Press `Prefix` + `I` to install the plugins
 
+## Zathura
 
+The `zathurarc` file is here only for the [Zathura](https://pwmt.org/projects/zathura/) use.
+
+To apply them:
+```bash
+cp zathura/zathurarc $XDG_CONFIG_HOME/zathura/
+```
