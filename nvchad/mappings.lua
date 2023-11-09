@@ -25,7 +25,6 @@ M.general = {
     ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "window Down" },
     ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "window Up" },
     ["U"] = { "<C-r>" },
-    [";"] = { "'", "Mark" },
 
     -- Create lines automatically
     ["o"] = { "o<ESC>", "insert below" },
@@ -58,7 +57,7 @@ M.general = {
     ["<F2>"] = { "<<", "Indent back" },
     ["<F3>"] = { ">>", "Indent" },
 
-    ["vA"] = {"ggvG$", "Select everythin"},
+    ["vA"] = { "ggvG$", "Select everythin" },
 
     -- ["W"] =
   },
@@ -107,9 +106,19 @@ M.flash = {
     },
     ["S"] = {
       function()
-        require("flash").treesitter()
+        require("flash").remote()()
       end,
       "Flash treesitter",
+    },
+    ["*"] = {
+      function()
+        require("flash").jump {
+          search = { mode = "search", max_length = 0 },
+          label = { after = { 0, 0 } },
+          pattern = "^",
+        }
+      end,
+        "go to line"
     },
   },
 }
