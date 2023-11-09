@@ -48,8 +48,8 @@ tmux source $XDG_CONFIG_HOME/tmux/tmux.conf
 
 Apply the changes:
 
-The Prefix is <kbd>ctrl</kbd> + `Space`
+The new Prefix is <kbd>ctrl</kbd> + `Space`
 
-Press `Prefix` + `I`
+Press `Prefix` + `I` to install the plugins
 
 
