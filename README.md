@@ -27,7 +27,7 @@ Install Starship via this [link](https://starship.rs/guide/#%F0%9F%9A%80-install
 Copy the `starship.toml` file in `$XDG_CONFIG_HOME/`:
 
 ```bash
-cp starship/starship/toml $XDG_CONFIG_HOME/
+cp starship/starship.toml $XDG_CONFIG_HOME/
 ```
 
 ## Tmux
