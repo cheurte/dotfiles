@@ -22,7 +22,7 @@ In addition, [Nerd Font](https://www.nerdfonts.com/) should be installed as well
 
 ## Starship
 
-Install Starship via this [link](https://starship.rs/guide/#%F0%9F%9A%80-installation)
+Install Starship via this [link](https://starship.rs/guide/#%F0%9F%9A%80-installation).
 
 Copy the `starship.toml` file in `$XDG_CONFIG_HOME/`:
 
@@ -32,7 +32,7 @@ cp starship/starship.toml $XDG_CONFIG_HOME/
 
 ## Tmux
 
-Install tmux via this [link](https://github.com/tmux/tmux/wiki/Installing)
+Install tmux via this [link](https://github.com/tmux/tmux/wiki/Installing).
 
 Install the Tmux Plugin Manager:
 ```bash
