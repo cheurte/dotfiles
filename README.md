@@ -46,7 +46,7 @@ tmux source $XDG_CONFIG_HOME/tmux/tmux.conf
 
 Apply the changes:
 
-The Prefix is <kdb>ctrl</kdb> + `Space`
+The Prefix is <kbd>ctrl</kbd> + `Space`
 
 Press `Prefix` + `I`
 
