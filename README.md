@@ -4,7 +4,9 @@ Repository for my config.
 
 ## NvChad
 
-Install [Neovim](https://neovim.io/) install [NvChad](https://nvchad.com/docs/quickstart/install):
+Install [Neovim](https://neovim.io/) and install [NvChad](https://nvchad.com/docs/quickstart/install) according to your configuration.
+
+Copy the files to the right folder:
 
 ```bash
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
@@ -16,7 +18,7 @@ Then copy the content of the NvChad folder to `$XDG_CONFIG_HOME/nvim/lua/custom/
 cp -r nvchad/* $XDG_CONFIG_HOME/nvim/lua/custom/
 ```
 
-In addition, a [Nerd Font](https://www.nerdfonts.com/) should be installed as well as gcc.
+In addition, [Nerd Font](https://www.nerdfonts.com/) should be installed as well as gcc.
 
 ## Starship
 
