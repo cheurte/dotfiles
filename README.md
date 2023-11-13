@@ -6,6 +6,8 @@ Repository for my config.
 
 Install [Neovim](https://neovim.io/) and install [NvChad](https://nvchad.com/docs/quickstart/install) according to your configuration.
 
+In addition, [Nerd Font](https://www.nerdfonts.com/) should be installed as well as gcc, fzf, and make.
+
 Copy the files to the right folder:
 
 ```bash
@@ -18,7 +20,16 @@ Then copy the content of the NvChad folder to `$XDG_CONFIG_HOME/nvim/lua/custom/
 cp -r nvchad/* $XDG_CONFIG_HOME/nvim/lua/custom/
 ```
 
-In addition, [Nerd Font](https://www.nerdfonts.com/) should be installed as well as gcc.
+On the first opening, once all the packages are installed, run the command `:MasonInstallAll`
+The supported language are:
+    - Python
+    - Rust
+    - Lua
+    - Latex
+
+### Troubleshooting
+
+If telescope require fzf library even though fzf is installed, got to the `telescope-fzf-native` folder, usualy in `~/.local/share/nvim/lazy/` and type `make`
 
 ## Starship
 
