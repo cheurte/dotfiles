@@ -27,9 +27,13 @@ The supported language are:
     - Lua
     - Latex
 
+For the TagBar plugin, please follow the installation instructions on: `https://docs.ctags.io/en/latest/autotools.html`
+
 ### Troubleshooting
 
 If telescope require fzf library even though fzf is installed, got to the `telescope-fzf-native` folder, usualy in `~/.local/share/nvim/lazy/` and type `make`
+
+If error `client 2 quit with exit code 127 and signal 0` then check node installation, then restart neovim and run `MasonInstallAll`
 
 ## Starship
 
