@@ -27,7 +27,7 @@ The supported language are:
     - Lua
     - Latex
 
-For the TagBar plugin, please follow the installation instructions on: `https://docs.ctags.io/en/latest/autotools.html`
+For the TagBar plugin, please follow the installation instructions [here](https://docs.ctags.io/en/latest/autotools.html)
 
 ### Troubleshooting
 
