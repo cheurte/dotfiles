@@ -1,7 +1,8 @@
 local plugins = {
+  --- Handle language stuff
   {
     "nvim-treesitter/nvim-treesitter",
-     opts = {
+    opts = {
       ensure_installed = {
         -- defaults
         "vim",
@@ -19,13 +20,11 @@ local plugins = {
     },
   },
   {
-    "pseewald/vim-anyfold",
-    event = "InsertEnter",
-    -- lazy = false,
-  },
-  {
     "nvim-telescope/telescope.nvim",
     optional = true,
+    -- config = function()
+    --   require("custom.configs.telescope").setup()
+    -- end,
     opts = function(_, opts)
       local function flash(prompt_bufnr)
         require("flash").jump {
@@ -53,24 +52,25 @@ local plugins = {
       })
     end,
   },
-  {
-    "yamatsum/nvim-cursorline",
-    lazy = false,
-    config = function()
-      require("nvim-cursorline").setup {
-        cursorline = {
-          enable = true,
-          timeout = 1000,
-          number = false,
-        },
-        cursorword = {
-          enable = true,
-          min_length = 3,
-          hl = { underline = true },
-        },
-      }
-    end,
-  },
+  --- Highlight words and lines on the cursor for Neovim
+  -- {
+  --   "yamatsum/nvim-cursorline",
+  --   lazy = false,
+  --   config = function()
+  --     require("nvim-cursorline").setup {
+  --       cursorline = {
+  --         enable = true,
+  --         timeout = 1000,
+  --         number = false,
+  --       },
+  --       cursorword = {
+  --         enable = true,
+  --         min_length = 3,
+  --         hl = { underline = true },
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -128,9 +128,11 @@ local plugins = {
       require("rust-tools").setup(opts)
     end,
   },
+  --- Debugger
   {
     "mfussenegger/nvim-dap",
   },
+  --- For latex file
   {
     "lervag/vimtex",
     ft = { "tex" },
@@ -138,29 +140,21 @@ local plugins = {
       vim.g.vimtex_view_method = "zathura"
     end,
   },
+  --- Read CSV in a correct manner
   {
-    --- Startup page
-    "goolord/alpha-nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      return require "custom.configs.alpha"
-    end,
-  },
-  {
-    --- Read CSV in a correct manner
     "chrisbra/csv.vim",
     ft = { "csv" },
     config = function() end,
   },
+  --- Show marks
   {
-    --- Show marks
     "chentoast/marks.nvim",
     event = "VeryLazy",
     config = function()
       require("marks").setup {}
     end,
   },
+  --- Better escape
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -168,59 +162,72 @@ local plugins = {
       require("better_escape").setup {
         mapping = { "jk", "jj" },
         timeout = vim.o.timeoutlen,
-        clear_empty_lines = false,
+        clear_empty_lines = true,
         keys = "<esc>",
       }
     end,
   },
+  --- Allow vim navigator for tmux
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup {
-        -- Configuration here, or leave empty to use defaults
-      }
-    end,
-  },
+  -- {
+  --   "kylechui/nvim-surround",
+  --   version = "*", -- Use for stability; omit to use `main` branch for the latest features
+  --   event = 'VeryLazy',
+  --   config = function()
+  --     require("nvim-surround").setup {
+  --       -- Configuration here, or leave empty to use defaults
+  --     }
+  --   end,
+  -- },
+  --- Allow custom moving commands
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
+    lazy = true,
   },
+  --- Generate comments and doc
   {
     "danymat/neogen",
+    lazy = true,
+    dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
       require("custom.configs.neogen").setup()
     end,
-    cmd = { "Neogen" },
-    module = "neogen",
-    disable = false,
   },
+  --- Tagbar is a Vim plugin that provides an easy way to browse the tags of the current file and get an overview of its structure. It does this by creating a sidebar that displays the ctags-generated tags of the current file, ordered by their scope. This means that for example methods in C++ are displayed under the class they are defined in.
   {
     "preservim/tagbar",
+    lazy = true,
     event = "VeryLazy",
   },
+  --- Highlight arguments' definitions and usages, asynchronously, using Treesitter
   {
     "m-demare/hlargs.nvim",
-    event = "VeryLazy",
+    lazy = false,
     config = function()
       require("hlargs").setup()
     end,
   },
+  --- Print different colors for delimiters
   {
     "HiPhish/rainbow-delimiters.nvim",
-    event = "VeryLazy",
+    lazy = false,
     config = function()
       return require "custom.configs.rainbow"
     end,
   },
-    {
-        'wellle/context.vim',
-        event="VeryLazy",
-    }
+  --- Create a context if the start of the function/class is not on the screen
+  {
+    "wellle/context.vim",
+    lazy = false,
+  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   version = "3.3.7", -- Specify the version you want
+  --   main = "ibl",
+  --   config = function() end,
+  -- },
 }
 return plugins

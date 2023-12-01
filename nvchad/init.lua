@@ -1,9 +1,11 @@
 -- local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 local augroup = vim.api.nvim_create_augroup
+local autopt = vim.api.nvim_set_option
 local opt = vim.opt
 local g = vim.g
 local cmd = vim.cmd
+--
 -- General parameters
 opt.cursorcolumn = true
 opt.cursorline = true
@@ -12,19 +14,27 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.scrolloff = 10
+-- opt.signcolumn = "auto"
 opt.foldlevel = 99
-opt.signcolumn = "auto"
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
+autopt("guicursor", "i:ver100-iCursor")
+autopt("guicursor", vim.api.nvim_get_option "guicursor" .. ",i:blinkwait10")
+autopt("guicursor", vim.api.nvim_get_option "guicursor" .. ",i-ci:block")
+
+-- autocmd VimEnter * :highlight CursorColumn guibg=#000000
+-- autocmd VimEnter * :highlight CursorLine guibg=#000000
+-- autocmd VimEnter * :highlight CursorLine ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold gui=reverse
+--
+-- autocmd VimEnter * :highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold gui=reverse
+-- Highlight Line
 cmd [[
-    " highlight Cursor guifg=white guibg=black
-    " highlight iCursor guifg=white guibg=white
-    " set guicursor=n-v-c:block-Cursor
-    " set guicursor+=n-v-c:blinkon0
-    set guicursor+=i:ver100-iCursor
-    set guicursor+=i:blinkwait10
-    set guicursor+=i-ci:block
-]]
+   augroup ilikecursorline
+        autocmd VimEnter * :highlight Comment cterm=bold
+    augroup END
 
+]]
 -- Remove whitespace on save
 autocmd("BufWritePre", {
   pattern = "",
