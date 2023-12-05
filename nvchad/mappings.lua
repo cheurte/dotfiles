@@ -118,7 +118,7 @@ M.flash = {
           pattern = "^",
         }
       end,
-        "go to line"
+      "go to line",
     },
   },
 }
@@ -140,4 +140,47 @@ M.neogen = {
     },
   },
 }
+M.spider = {
+  n = {
+    ["e"] = {
+      function()
+        require("spider").motion "e"
+      end,
+      "e spider motion",
+    },
+    ["b"] = {
+      function()
+        require("spider").motion "b"
+      end,
+      "b spider motion",
+    },
+    ["w"] = {
+      function()
+        require("spider").motion "w"
+      end,
+      "w spider motion",
+    },
+  },
+  v = {
+    ["e"] = {
+      function()
+        require("spider").motion "e"
+      end,
+      "e spider motion",
+    },
+    ["b"] = {
+      function()
+        require("spider").motion "b"
+      end,
+      "b spider motion",
+    },
+    ["w"] = {
+      function()
+        require("spider").motion "w"
+      end,
+      "w spider motion",
+    },
+  },
+}
+
 return M

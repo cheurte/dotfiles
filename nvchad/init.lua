@@ -162,3 +162,15 @@ autocmd({ "FileType" }, {
   pattern = { "rust" },
   command = "imap <buffer> <F9> <esc>:w<CR>:exec '!cargo run'<CR>",
 })
+
+-- Auto toggle for markdown
+autocmd({ "FileType" }, {
+  pattern = { "markdown" },
+  command = "imap <buffer> <F9> <esc>:w<CR>:MarkdownPreviewToggle<CR>",
+})
+autocmd({ "FileType" }, {
+  pattern = { "markdown" },
+  command = "map <buffer> <F9> :w<CR>:MarkdownPreviewToggle<CR>",
+})
+
+

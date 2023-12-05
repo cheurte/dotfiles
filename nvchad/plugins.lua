@@ -223,11 +223,17 @@ local plugins = {
     "wellle/context.vim",
     lazy = false,
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   version = "3.3.7", -- Specify the version you want
-  --   main = "ibl",
-  --   config = function() end,
-  -- },
+  {
+    "chrisgrieser/nvim-spider",
+    lazy = false,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
 }
 return plugins
