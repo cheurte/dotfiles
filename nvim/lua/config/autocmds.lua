@@ -35,21 +35,21 @@ autopt("guicursor", vim.api.nvim_get_option("guicursor") .. ",i-ci:block")
 -- Auto compile python file
 autocmd({ "FileType" }, {
   pattern = { "python" },
-  command = "map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>",
+  command = "map <buffer> <F9> <cmd>w<CR><cmd>exec '!python3' shellescape(@%, 1)<CR>",
 })
 
 autocmd({ "FileType" }, {
   pattern = { "python" },
-  command = "imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>",
+  command = "imap <buffer> <F9> <esc><cmd>w<CR><cmd>exec '!python3' shellescape(@%, 1)<CR>",
 })
 
 -- Auto compile and run rust
 autocmd({ "FileType" }, {
   pattern = { "rust" },
-  command = "map <buffer> <F9> :w<CR>:exec '!cargo run'<CR>",
+  command = "map <buffer> <F9> <cmd>w<CR><cmd>exec '!cargo run'<CR>",
 })
 
 autocmd({ "FileType" }, {
   pattern = { "rust" },
-  command = "imap <buffer> <F9> <esc>:w<CR>:exec '!cargo run'<CR>",
+  command = "imap <buffer> <F9> <esc><cmd>w<CR><cmd>exec '!cargo run'<CR>",
 })

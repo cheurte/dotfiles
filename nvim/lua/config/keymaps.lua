@@ -10,6 +10,7 @@ local map = vim.keymap.set
 -- Simple remap
 map("n", "o", "o<esc>", { silent = true })
 map("n", "O", "O<esc>", { silent = true })
+map("n", "U", "<C-r>")
 
 -- New buffer shortcut
 map("n", "<tab>", "<cmd>bnext<cr>")
@@ -50,10 +51,6 @@ map("n", "<leader>ep", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 
 -- Deleting the opening of file explorer with leader-e
 map("n", "<leader>e", "")
-
--- -- Ignore the replacement on lines with alt+{j, k}
--- map("i", "<A-j>", "<esc>j")
--- map("i", "<A-k>", "<esc>k")
 
 -- Select everything
 map("n", "vA", "ggvG$")

@@ -1,6 +1,6 @@
 <h1 align="center"> ✨ Config perso ✨ </h1>
 
-Repository for my config for Neovim, tmux and Zathura.
+Repository for my config for Neovim, tmux, starship and Zathura.
 
 ## NvChad
 
