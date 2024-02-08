@@ -8,10 +8,18 @@ end
 
 
 local lspconfig = require "lspconfig"
-local servers = { "clangd", "neocmake", "jsonls", "dockerls", "docker_compose_language_service", "dockerls", "marksman",
-    "pyright", "ruff_lsp",
+local servers = { "clangd",
+    "neocmake",
+    "jsonls",
+    "dockerls",
+    "docker_compose_language_service",
+    "dockerls",
+    "marksman",
+    "pyright",
+    "ruff_lsp",
     "rust_analyzer",
-    "texlab", "ltex" }
+    "texlab",
+    "ltex" }
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {

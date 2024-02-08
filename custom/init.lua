@@ -19,6 +19,17 @@ opt.foldlevel = 99
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
+-- g.loaded_python3_provider = nil
+g.python3_host_prog = "/usr/bin/python3"
+
+local enable_providers = {
+    "python3_provider",
+}
+
+for _, plugin in pairs(enable_providers) do
+    vim.g["loaded_" .. plugin] = nil
+    vim.cmd("runtime " .. plugin)
+end
 
 autopt("guicursor", "i:ver100-iCursor")
 autopt("guicursor", vim.api.nvim_get_option "guicursor" .. ",i:blinkwait10")
@@ -84,6 +95,8 @@ autocmd({ "BufReadPost" }, {
 --     P = "method",
 --   },
 -- }
+vim.cmd [[autocmd BufNewFile,BufRead *.csv   set filetype=csv_semicolon]]
+vim.cmd [[autocmd BufNewFile,BufRead *.csv   set nowrap]]
 
 -- desactivate cursor when out of window
 local cursorGrp = augroup("cursor_off", { clear = true })
@@ -107,6 +120,3 @@ cmd [[
       autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
     augroup END
 ]]
-
--- Format on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
