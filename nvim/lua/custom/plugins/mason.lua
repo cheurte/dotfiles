@@ -36,6 +36,8 @@ return {
         "shfmt",
         --spelling
         "codespell",
+        -- bash
+        "bash-language-server",
       },
     },
     automatic_install = true,

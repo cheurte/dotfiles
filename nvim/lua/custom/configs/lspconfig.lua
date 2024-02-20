@@ -19,7 +19,9 @@ local servers = { "clangd",
     "ruff_lsp",
     "rust_analyzer",
     "texlab",
-    "ltex" }
+    "ltex",
+    "bashls",
+}
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
