@@ -33,7 +33,7 @@ fi
 
 # Check for distribution and install accordingly
 echo "Distribution '$OS' detected"
-if [[ "Fedora" == *"$OS" ]]; then
+if grep -q "Fedora" <<<"$OS"; then
 	sudo dnf install tmux
 elif [[ "Ubuntu" == *"$OS" ]]; then
 	sudo apt-get install tmux
@@ -55,11 +55,13 @@ else
 	git clone https://www.github.com/cheurte/dotfiles ~/.config/dotfiles
 fi
 
-if [ ! -d ~/.config/tmux/ ]; then
-	echo "please install tmux manually, automatic installation must have failed"
-else
-	cp ~/.config/dotfiles/tmux/tmux.conf ~/.config/tmux/
+# Creating tmux config folder
+if [ ! -d ~/.config/tmux ]; then
+	echo "CREATING Tmux CONFIG FOLDER"
+	mkdir ~/.config/tmux/
 fi
+
+cp ~/.config/dotfiles/tmux/tmux.conf ~/.config/tmux/
 
 tmux source ~/.config/tmux/tmux.conf
 
