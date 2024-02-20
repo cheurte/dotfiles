@@ -3,6 +3,12 @@
 Repository for my config for Neovim, tmux, starship and Zathura.
 They are installation script for each of them (except Zathura), they are configured to work on fedora and Ubuntu/Debian.
 
+You can install everything authomatically with:
+
+```bash
+sudo chmod +x ./install_everything.sh && ./install_everything.sh
+```
+
 The Dockerfile is not ready yet, and it is just there to run Neovim within a container. DO NOT USE IT
 
 ## Neovim

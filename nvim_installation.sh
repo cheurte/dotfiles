@@ -46,17 +46,22 @@ elif [[ "Ubuntu" == *"$OS" ]]; then
 		sudo snap install neovim --classic
 	fi
 else
-	echo "Neovim  already installed, or distribution not handled"
+	echo "Distribution not handled, please install everything manually"
+	exit 1
 fi
 
-sudo $INSTALL update
+if [ -n $INSTALL ]; then
+	sudo $INSTALL update
 
-if [[ "Ubuntu" == *"$OS" ]]; then
-	sudo $INSTALL upgrade -y
+	if [[ "Ubuntu" == *"$OS" ]]; then
+		sudo $INSTALL upgrade -y
+	fi
+
+	sudo $INSTALL install git nodejs neovim ripgrep cmake fzf ripgrep gcc g++
+else
+	exit 1
 fi
-
-sudo $INSTALL git nodejs neovim ripgrep build-base cmake fzf ripgrep
 
 cp -r ~/.config/dotfiles/nvim/ ~/.config/
 
-nvim
+echo "PLEASE run the 'nvim' command now"
