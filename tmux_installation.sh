@@ -60,3 +60,7 @@ if [ ! -d ~/.config/tmux/ ]; then
 else
 	cp ~/.config/dotfiles/tmux/tmux.conf ~/.config/tmux/
 fi
+
+tmux source ~/.config/tmux/tmux.conf
+
+~/.tmux/plugins/tpm/bin/install_plugins
