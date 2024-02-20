@@ -1,64 +1,70 @@
 <h1 align="center"> ✨ Config perso ✨ </h1>
 
 Repository for my config for Neovim, tmux, starship and Zathura.
+They are installation script for each of them (except Zathura), they are configured to work on fedora and Ubuntu/Debian.
 
-## NvChad
+The Dockerfile is not ready yet, and it is just there to run Neovim within a container. DO NOT USE IT
 
-Install [Neovim](https://neovim.io/) and install [NvChad](https://nvchad.com/docs/quickstart/install) according to your configuration.
+## Neovim
 
-In addition, [Nerd Font](https://www.nerdfonts.com/) should be installed as well as gcc, [fzf](https://github.com/junegunn/fzf), and make.
-
-Copy the files to the right folder:
-
-```bash
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
-```
-
-Then copy the content of the NvChad folder to `$XDG_CONFIG_HOME/nvim/lua/custom/`:
+The Neovim configuration is using NvChad. You can either install Neovim and NvChad automatically by running:
 
 ```bash
-cp -r nvchad/* $XDG_CONFIG_HOME/nvim/lua/custom/
+sudo chmod +x ./nvim_installation.sh && ./nvim_installation.sh
 ```
 
-On the first opening, once all the packages are installed, run the command `:MasonInstallAll`
-The supported language are:
-    - Python
-    - Rust
-    - Lua
-    - Latex
+Or install everything manually:
 
-For the TagBar plugin, please follow the installation instructions [here](https://docs.ctags.io/en/latest/autotools.html)
+- Install [Neovim](https://neovim.io/), a [Nerd Font](https://www.nerdfonts.com/) should be installed, as well as git nodejs, neovim, ripgrep, build-base, cmake, fzf and ripgrep.
+
+- Finally, copy the configuration folder:
+
+```bash
+cp -r dotfiles/nvim/ ~/.config/nvim/
+```
 
 ### Troubleshooting
 
- - If telescope require fzf library even though fzf is installed, got to the `telescope-fzf-native` folder, usually in `~/.local/share/nvim/lazy/` and type `make`
+- If telescope require fzf library even though fzf is installed, got to the `telescope-fzf-native` folder, usually in `~/.local/share/nvim/lazy/` and type `make`
 
- - If error `client 2 quit with exit code 127 and signal 0` then check node installation, then restart Neovim and run `MasonInstallAll`
-
- - latex-ls need node to be installed and possibly the environment variable `$JAVA_HOME` to be set. To set it, install if it's not already done [java](https://www.oracle.com/java/technologies/downloads/) and set `$JAVA_HOME` to `/usr/lib/jvm/jdk-21-oracle-x64/`
+- If error `client 2 quit with exit code 127 and signal 0` then check node installation, then restart Neovim and run `MasonInstallAll`
 
 ## Starship
 
-Install Starship via this [link](https://starship.rs/guide/#%F0%9F%9A%80-installation).
-
-Copy the `starship.toml` file in `$XDG_CONFIG_HOME/`:
+Install everything automatically with the installation script:
 
 ```bash
-cp starship/starship.toml $XDG_CONFIG_HOME/
+sudo chmod +x ./starship_installation.sh && ./starship_installation.sh
+```
+
+Or, install Starship via this [link](https://starship.rs/guide/#%F0%9F%9A%80-installation), and copy the `starship.toml` file in `$XDG_CONFIG_HOME/`:
+
+```bash
+cp dotfiles/starship/starship.toml $XDG_CONFIG_HOME/
 ```
 
 ## Tmux
 
-Install tmux via this [link](https://github.com/tmux/tmux/wiki/Installing).
+Install everything automatically with the installation script:
 
-Install the Tmux Plugin Manager:
+```bash
+sudo chmod +x ./tmux_installation.sh && ./tmux_installation.sh
+```
+
+Or install it manually:
+
+- Install tmux via this [link](https://github.com/tmux/tmux/wiki/Installing).
+
+- Install the Tmux Plugin Manager:
+
 ```bash
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 Copy the `tmux.conf` into `$XDG_CONFIG_HOME/tmux/`:
+
 ```bash
-cp tmux/tmux.conf $XDG_CONFIG_HOME/tmux/
+cp dotfiles/tmux/tmux.conf $XDG_CONFIG_HOME/tmux/
 tmux source $XDG_CONFIG_HOME/tmux/tmux.conf
 ```
 
@@ -70,9 +76,12 @@ Press `Prefix` + `I` to install the plugins
 
 ## Zathura
 
+No installation script yet.
+
 The `zathurarc` file is here only for the [Zathura](https://pwmt.org/projects/zathura/) use.
 
 To apply them:
+
 ```bash
-cp zathura/zathurarc $XDG_CONFIG_HOME/zathura/
+cp dotfiles/zathura/zathurarc $XDG_CONFIG_HOME/zathura/
 ```
