@@ -19,16 +19,13 @@ opt.foldlevel = 99
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
--- g.loaded_python3_provider = nil
-g.python3_host_prog = "/usr/bin/python3"
-
 local enable_providers = {
-    "python3_provider",
+  "python3_provider",
 }
 
 for _, plugin in pairs(enable_providers) do
-    vim.g["loaded_" .. plugin] = nil
-    vim.cmd("runtime " .. plugin)
+  vim.g["loaded_" .. plugin] = nil
+  vim.cmd("runtime " .. plugin)
 end
 
 autopt("guicursor", "i:ver100-iCursor")
@@ -37,28 +34,28 @@ autopt("guicursor", vim.api.nvim_get_option "guicursor" .. ",i-ci:block")
 
 -- Remove whitespace on save
 autocmd("BufWritePre", {
-    pattern = "",
-    command = ":%s/\\s\\+$//e",
+  pattern = "",
+  command = ":%s/\\s\\+$//e",
 })
 
 -- Get to last position
 autocmd({ "BufReadPost" }, {
-    pattern = { "*" },
-    callback = function()
-        local ft = vim.opt_local.filetype:get()
-        -- don't apply to git messages
-        if ft:match "commit" or ft:match "rebase" then
-            return
-        end
-        -- get position of last saved edit
-        local markpos = vim.api.nvim_buf_get_mark(0, '"')
-        local line = markpos[1]
-        local col = markpos[2]
-        -- if in range, go there
-        if (line > 1) and (line <= vim.api.nvim_buf_line_count(0)) then
-            vim.api.nvim_win_set_cursor(0, { line, col })
-        end
-    end,
+  pattern = { "*" },
+  callback = function()
+    local ft = vim.opt_local.filetype:get()
+    -- don't apply to git messages
+    if ft:match "commit" or ft:match "rebase" then
+      return
+    end
+    -- get position of last saved edit
+    local markpos = vim.api.nvim_buf_get_mark(0, '"')
+    local line = markpos[1]
+    local col = markpos[2]
+    -- if in range, go there
+    if (line > 1) and (line <= vim.api.nvim_buf_line_count(0)) then
+      vim.api.nvim_win_set_cursor(0, { line, col })
+    end
+  end,
 })
 
 -- Configure tagbar for Rust
@@ -98,18 +95,18 @@ autocmd({ "BufReadPost" }, {
 vim.cmd [[autocmd BufNewFile,BufRead *.csv   set filetype=csv_semicolon]]
 vim.cmd [[autocmd BufNewFile,BufRead *.csv   set nowrap]]
 
--- desactivate cursor when out of window
+-- deactivate cursor when out of window
 local cursorGrp = augroup("cursor_off", { clear = true })
 autocmd({ "WinLeave" }, {
-    pattern = { "*" },
-    command = "set nocursorline nocursorcolumn",
-    group = cursorGrp,
+  pattern = { "*" },
+  command = "set nocursorline nocursorcolumn",
+  group = cursorGrp,
 })
 
 autocmd({ "WinEnter" }, {
-    pattern = { "*" },
-    command = "set cursorline cursorcolumn",
-    group = cursorGrp,
+  pattern = { "*" },
+  command = "set cursorline cursorcolumn",
+  group = cursorGrp,
 })
 
 -- Number lines

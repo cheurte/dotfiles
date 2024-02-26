@@ -25,7 +25,7 @@ return {
         -- Python
         "pyright",
         "ruff-lsp",
-        -- "ruff_format",
+        "ruff_format",
         "debugpy",
         -- Rust
         "rust-analyzer",
@@ -36,7 +36,6 @@ return {
         "shfmt",
         --spelling
         "codespell",
-        -- bash
         "bash-language-server",
       },
     },
