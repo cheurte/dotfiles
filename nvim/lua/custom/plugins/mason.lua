@@ -25,7 +25,6 @@ return {
         -- Python
         "pyright",
         "ruff-lsp",
-        "ruff_format",
         "debugpy",
         -- Rust
         "rust-analyzer",
