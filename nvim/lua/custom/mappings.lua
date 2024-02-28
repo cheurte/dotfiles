@@ -6,6 +6,8 @@ M.disabled = {
 }
 M.general = {
     n = {
+        ["ù"] = {"%", "change mapping"},
+
         ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "window Left" },
         ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "window Right" },
         ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "window Down" },
@@ -23,7 +25,7 @@ M.general = {
         ["<F2>"] = { "<<", "Indent back" },
         ["<F3>"] = { ">>", "Indent" },
 
-        ["vA"] = { "ggvG$", "Select everythin" },
+        ["vA"] = { "ggvG$", "Select everything" },
 
         -- ["W"] =
     },
