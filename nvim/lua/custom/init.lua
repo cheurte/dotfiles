@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 local augroup = vim.api.nvim_create_augroup
 local autopt = vim.api.nvim_set_option
 local opt = vim.opt
-local g = vim.g
+-- local g = vim.g
 local cmd = vim.cmd
 --
 -- General parameters
@@ -117,3 +117,21 @@ cmd [[
       autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
     augroup END
 ]]
+
+-- Open link with gx
+local open_command = 'xdg-open'
+if vim.fn.has('mac') == 1 then
+  open_command = 'open'
+end
+
+local function url_repo()
+  local cursorword = vim.fn.expand('<cfile>')
+  if string.find(cursorword, '^[a-zA-Z0-9-_.]*/[a-zA-Z0-9-_.]*$') then
+    cursorword = 'https://github.com/' .. cursorword
+  end
+  return cursorword or ''
+end
+
+vim.keymap.set('n', 'gx', function()
+  vim.fn.jobstart({ open_command, url_repo() }, { detach = true })
+end, { silent = true })

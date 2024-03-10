@@ -6,7 +6,7 @@ M.disabled = {
 }
 M.general = {
     n = {
-        ["ù"] = {"%", "change mapping"},
+        ["ù"] = { "%", "change mapping" },
 
         ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "window Left" },
         ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "window Right" },
@@ -27,8 +27,7 @@ M.general = {
 
         ["vA"] = { "ggvG$", "Select everything" },
 
-        -- ["W"] =
-    },
+      },
 
     v = {
         ["<F2>"] = { "<gv", "Indent back" },
@@ -36,5 +35,19 @@ M.general = {
     },
 
     t = {},
+}
+M.trouble = {
+    n = {
+        ["<leader>en"] = {
+            function()
+                require("trouble").next({ skip_groups = true, jump = true })
+            end,
+        },
+        ["<leader>ep"] = {
+            function()
+                require("trouble").previous({ skip_groups = true, jump = true })
+            end,
+        },
+    }
 }
 return M

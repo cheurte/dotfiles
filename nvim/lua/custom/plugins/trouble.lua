@@ -21,7 +21,7 @@ return { {
             end,
             desc = "Previous trouble/quickfix item",
         },
-        {
+       {
             "]q",
             function()
                 if require("trouble").is_open() then
