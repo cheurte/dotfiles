@@ -16,6 +16,7 @@ local servers = {
 	"marksman",
 	"pyright",
 	"ruff_lsp",
+	"zls",
 	-- "rust_analyzer",
 	"texlab",
 	"ltex",

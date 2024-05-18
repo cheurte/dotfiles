@@ -1,6 +1,8 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
+
+		enabled = true,
 		opts = function()
 			local conf = require("nvchad.configs.cmp")
 			conf.sources = {

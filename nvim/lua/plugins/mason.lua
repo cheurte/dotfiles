@@ -38,6 +38,8 @@ return {
 				--spelling
 				"codespell",
 				"bash-language-server",
+				-- zig
+				"zls",
 			}
 			return conf
 		end,

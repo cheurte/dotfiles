@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		enabled = true,
 		dependencies = {
 			{
 				"nvim-treesitter/nvim-treesitter-context",
@@ -12,27 +13,26 @@ return {
 		opts = function()
 			local conf = require("nvchad.configs.treesitter")
 			conf.ensure_installed = {
-				"vim",
+				-- "vim",
 				"lua",
 				"rust",
-				"python",
+				-- "python",
 				"markdown",
-				"c",
-				"cpp",
+				-- "c",
+				-- "cpp",
 				"csv",
 				"toml",
 				"json",
 				"json5",
 				"jsonc",
-				"dockerfile",
+				-- "dockerfile",
 				"markdown",
 				"markdown_inline",
-				"ninja",
+				-- "ninja",
 				"python",
-				"rst",
+				-- "rst",
 				"toml",
-				"ron",
-				"rust",
+				-- "ron",
 				"latex",
 			}
 			conf.incremental_selection = {

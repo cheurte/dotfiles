@@ -31,6 +31,12 @@ for _, plugin in pairs(enable_providers) do
 	vim.cmd("runtime " .. plugin)
 end
 
+vim.filetype.add({
+	pattern = {
+		[".*%.wgsl"] = "wgsl",
+	},
+})
+
 autopt("guicursor", "i:ver100-iCursor")
 autopt("guicursor", vim.api.nvim_get_option("guicursor") .. ",i:blinkwait10")
 autopt("guicursor", vim.api.nvim_get_option("guicursor") .. ",i-ci:block")

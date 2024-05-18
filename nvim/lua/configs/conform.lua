@@ -17,7 +17,7 @@ local options = {
 		["yaml"] = { "prettier" },
 		["markdown"] = { "prettier" },
 		["markdown.mdx"] = { "prettier" },
-		["*"] = { "codespell" },
+		-- ["*"] = { "codespell" },
 		-- Use the "_" filetype to run formatters on filetypes that don't
 		-- have other formatters configured.
 		["_"] = { "trim_whitespace" },
