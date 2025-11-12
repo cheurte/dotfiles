@@ -41,7 +41,7 @@ return {
     servers = {
       -- "groovyls",
       "pyright",
-      "ruff",
+      -- "ruff",
       "dockerls",
       "bashls",
       "neocmake",

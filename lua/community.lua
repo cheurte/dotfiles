@@ -20,4 +20,5 @@ return {
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.colorscheme.rose-pine" },
   { import = "astrocommunity.pack.cmake" },
+  { import = "astrocommunity.pack.python-ruff" },
 }
